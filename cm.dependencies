@@ -12,10 +12,6 @@
     "target_path": "device/samsung/msm8960-common"
   },
   {
-    "repository": "android_device_samsung_hlte",
-    "target_path": "device/samsung/hlte"
-  },
-   {
     "repository": "android_kernel_samsung_hlte",
     "target_path": "kernel/samsung/hlte"
   },

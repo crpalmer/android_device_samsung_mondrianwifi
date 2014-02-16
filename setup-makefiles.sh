@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export VENDOR=samsung
-export DEVICE=hlte
+export DEVICE=mondrianwifi
 
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
@@ -109,7 +109,7 @@ EOF
 
 LOCAL_PATH := \$(call my-dir)
 
-ifneq (\$(filter hlte,\$(TARGET_DEVICE)),)
+ifneq (\$(filter mondrianwifi,\$(TARGET_DEVICE)),)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libtime_genoff

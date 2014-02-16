@@ -18,6 +18,6 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Samsung Galaxy Note 3"
+#define BTM_DEF_LOCAL_NAME   "Samsung Galaxy Tab Pro 8.4"
 
 #endif
