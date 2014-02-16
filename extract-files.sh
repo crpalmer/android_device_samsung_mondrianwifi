@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-export DEVICE=hlte
+export DEVICE=mondrianwifi
 export VENDOR=samsung
 
 if [ $# -eq 0 ]; then
