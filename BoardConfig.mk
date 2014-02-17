@@ -20,11 +20,15 @@
 # definition file).
 #
 
+TARGET_ARCH := arm
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
+
 # inherit from common msm8960
--include device/samsung/msm8960-common/BoardConfigCommon.mk
+include device/samsung/msm8960-common/BoardConfigCommon.mk
 
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/mondrianwifi/include
-
 
 # overrides  msm8960
 TARGET_BOARD_PLATFORM := msm8974
@@ -32,11 +36,12 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 
 # Kernel Configs
-# TARGET_KERNEL_SOURCE := kernel/samsung/mondrianwifi
-# TARGET_KERNEL_CONFIG := msm8974_sec_defconfig
-# TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/mondrianwifi
+TARGET_KERNEL_CONFIG := msm8974_sec_defconfig
+TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 # TARGET_KERNEL_VARIANT_CONFIG := msm8974_sec_???_defconfig
-TARGET_PREBUILT_KERNEL := device/samsung/mondrianwifi/kernel
+TARGET_KERNEL_VARIANT_CONFIG := msm8974_sec_picassoeur_defconfig
+#TARGET_PREBUILT_KERNEL := device/samsung/mondrianwifi/kernel
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
@@ -78,10 +83,11 @@ BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 
 # QCOM support
 BOARD_USES_QCOM_HARDWARE := true
-TARGET_QCOM_MEDIA_VARIANT := caf-new
-TARGET_QCOM_DISPLAY_VARIANT := caf-new
 BOARD_USES_LEGACY_ALSA_AUDIO := 
 TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_QCOM_DISPLAY_VARIANT := caf-new
+TARGET_QCOM_MEDIA_VARIANT := caf-new
+TARGET_DISPLAY_USE_RETIRE_FENCE := false
 
 # Audio settings
 BOARD_USES_CUSTOM_AUDIO_PLATFORM_PATH := device/samsung/mondrianwifi/audio/platform

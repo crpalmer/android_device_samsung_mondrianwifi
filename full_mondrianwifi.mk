@@ -31,3 +31,6 @@ PRODUCT_DEVICE := mondrianwifi
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_MODEL := SM-T320
+
+$(call inherit-product, device/samsung/mondrianwifi/device.mk)
+$(call inherit-product-if-exists, vendor/samsung/mondrianwifi/mondrianwifi-vendor.mk)

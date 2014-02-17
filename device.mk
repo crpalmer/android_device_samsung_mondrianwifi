@@ -191,9 +191,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_short_ons_3=""
 
 # msm_rng entropy feeder
-PRODUCT_PACKAGES += \
-    qrngd \
-    qrngp
+#PRODUCT_PACKAGES += \
+#    qrngd \
+#    qrngp
 
 # Wifi
 PRODUCT_COPY_FILES += \
