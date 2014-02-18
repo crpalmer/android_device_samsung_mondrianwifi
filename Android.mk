@@ -22,12 +22,12 @@
 
 LOCAL_PATH := $(call my-dir)
 
-#ifeq ($(BOARD_VENDOR),samsung)
-#ifeq ($(TARGET_BOARD_PLATFORM),msm8974)
+ifeq ($(BOARD_VENDOR),samsung)
+ifeq ($(TARGET_BOARD_PLATFORM),msm8974)
 
-#ifneq ($(filter mondrianwifi,$(TARGET_DEVICE)),)
+ifneq ($(filter mondrianwifi,$(TARGET_DEVICE)),)
 
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
-#endif
-#endif
-#endif
+endif
+endif
+endif
