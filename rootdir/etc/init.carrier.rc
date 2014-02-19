@@ -67,8 +67,8 @@ on fs
      chown system system /persdata/absolute
      chmod 0750 /persdata/absolute
 
-# diag app for cp uart
-service diag_uart_log /system/bin/diag_uart_log
+# bluetooth dhcp config
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
     class main
  disabled
  oneshot
