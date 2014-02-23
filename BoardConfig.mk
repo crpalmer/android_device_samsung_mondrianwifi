@@ -41,6 +41,7 @@ BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02900000 --tags_offset 0x02700000
+BOARD_KERNEL_SEPARATED_DT := true
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/mondrianwifi/mkbootimg.mk
 
 # Graphics
@@ -54,12 +55,9 @@ BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_KERNEL_SEPARATED_DT := true
 TARGET_RECOVERY_FSTAB := device/samsung/mondrianwifi/rootdir/etc/fstab.qcom
 
 TARGET_USERIMAGES_USE_EXT4 := true
-# fix this up by examining /proc/mtd on a running device
-# WARNING: These are just copied from the dlx and are guaranteed to be wrong!
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 13631488
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2569011200
@@ -83,7 +81,6 @@ BOARD_USES_LEGACY_ALSA_AUDIO :=
 TARGET_QCOM_AUDIO_VARIANT := caf
 TARGET_QCOM_DISPLAY_VARIANT := caf-new
 TARGET_QCOM_MEDIA_VARIANT := caf-new
-TARGET_DISPLAY_USE_RETIRE_FENCE := false
 
 # Audio settings
 BOARD_USES_CUSTOM_AUDIO_PLATFORM_PATH := device/samsung/mondrianwifi/audio/platform
