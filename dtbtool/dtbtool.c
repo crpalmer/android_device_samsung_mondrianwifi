@@ -41,7 +41,7 @@
 #include <unistd.h>
 
 #define QCDT_MAGIC     "QCDT"  /* Master DTB magic */
-#define QCDT_VERSION   1       /* QCDT version */
+#define QCDT_VERSION   2       /* QCDT version */
 
 #define QCDT_DT_TAG    "qcom,msm-id = <"
 
@@ -466,7 +466,7 @@ int main(int argc, char **argv)
 
     /* Calculate offset of first DTB block */
     dtb_offset = 12               + /* header */
-                 (20 * dtb_count) + /* DTB table entries */
+                 (24 * dtb_count) + /* DTB table entries */
                  4;                 /* end of table indicator */
     /* Round up to page size */
     padding = page_size - (dtb_offset % page_size);
@@ -481,9 +481,12 @@ int main(int argc, char **argv)
          dtb size
      */
     for (chip = chip_list; chip; chip = chip->next) {
+	uint32_t zero = 0;
+
         wrote += write(out_fd, &chip->chipset, sizeof(uint32_t));
         wrote += write(out_fd, &chip->platform, sizeof(uint32_t));
         wrote += write(out_fd, &chip->revNum, sizeof(uint32_t));
+        wrote += write(out_fd, &zero, sizeof(uint32_t));
         if (chip->master->master_offset != 0) {
             wrote += write(out_fd, &chip->master->master_offset, sizeof(uint32_t));
         } else {
