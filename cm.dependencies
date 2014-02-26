@@ -12,8 +12,8 @@
     "target_path": "device/samsung/msm8960-common"
   },
   {
-    "repository": "android_kernel_samsung_hlte",
-    "target_path": "kernel/samsung/hlte"
+    "repository": "android_kernel_samsung_mondrianwifi",
+    "target_path": "kernel/samsung/mondrianwifi"
   },
   {
     "repository": "android_hardware_samsung",
