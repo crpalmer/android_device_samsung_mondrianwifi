@@ -112,7 +112,11 @@ PRODUCT_PACKAGES += \
     macloader \
     crda \
     regulatory.bin \
-    linville.key.pub.pem
+    linville.key.pub.pem \
+    wcnss_service
+
+PRODUCT_COPY_FILES += \
+    device/samsung/mondrianwifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 
 # libxml2 is needed for camera
 PRODUCT_PACKAGES += libxml2
