@@ -24,7 +24,7 @@
 #define TOUCHKEY_POWER "/sys/class/input/input2/enabled"
 //#define SPEN_POWER "/sys/class/input/input3/enabled"
 #define TSP_POWER "/sys/class/input/input4/enabled"
-#define GPIO_KEYS_POWER "/sys/class/input/input21/enabled"
+//#define INV_POWER "/sys/bus/iio/devices/iio:device0/master_enable"
 
 static void sysfs_write(char *path, char *s) {
     char buf[80];
@@ -51,7 +51,7 @@ void cm_power_set_interactive_ext(int on) {
     sysfs_write(TSP_POWER, on ? "1" : "0");
     sysfs_write(TOUCHKEY_POWER, on ? "1" : "0");
     //sysfs_write(SPEN_POWER, on ? "1" : "0");
-    sysfs_write(GPIO_KEYS_POWER, on ? "1" : "0");
+    //sysfs_write(INV_POWER, on ? "1" : "0");
 }
 
 
