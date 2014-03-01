@@ -309,7 +309,7 @@
 
 	<!-- ================================================================ -->
 	<!-- Play Scenario  -->
-	<path name="speaker">
+	<path name="speaker-cdp">
 		<path name="spk" />
 		<ctl name="RX4 Digital Volume" value="82" />
 		<ctl name="RX6 Digital Volume" value="82" />
@@ -333,6 +333,10 @@
 		<ctl name="LINEOUT1 Volume" value="19" />
 		<ctl name="LINEOUT2 Volume" value="19" />
 		<ctl name="COMP2 Switch" value="1" />
+	</path>
+
+	<path name="headphones">
+		<path name="headset" />
 	</path>
 
 	<path name="speaker-and-headphones">
@@ -510,6 +514,11 @@
 		<ctl name="DEC5 Volume" value="84" />
 	</path>
 	<!-- end of Voice call Scenario  -->
+
+	<path name="handset-mic">
+		<path name="voice-call-speaker" />
+		<path name="voice-call-main-mic" />
+	</path>
 
 	<!-- ================================================================ -->
 	<!-- Video call Scenario -->
