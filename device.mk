@@ -81,7 +81,7 @@ PRODUCT_COPY_FILES += \
     device/samsung/mondrianwifi/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     device/samsung/mondrianwifi/keylayout/philips_remote_ir.kl:system/usr/keylayout/philips_remote_ir.kl \
     device/samsung/mondrianwifi/keylayout/samsung_remote_ir.kl:system/usr/keylayout/samsung_remote_ir.kl \
-    device/samsung/mondrianwifi/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
+    device/samsung/mondrianwifi/keylayout/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl \
     device/samsung/mondrianwifi/keylayout/ue_rf4ce_remote.kl:system/usr/keylayout/ue_rf4ce_remote.kl
 
 # Ramdisk
