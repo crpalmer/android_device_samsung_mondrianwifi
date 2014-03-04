@@ -187,7 +187,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #common build.props
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.chipname=msm8974 \
-    ro.sf.lcd_density=480 \
+    ro.sf.lcd_density=400 \
     ro.opengles.version=196608 \
     persist.timed.enable=true \
     keyguard.no_require_sim=true
