@@ -142,6 +142,10 @@ PRODUCT_COPY_FILES += \
 # libxml2 is needed for camera
 PRODUCT_PACKAGES += libxml2
 
+# Camera Wrapper
+PRODUCT_PACKAGES += \
+    camera.msm8974
+
 # IR packages
 PRODUCT_PACKAGES += \
     consumerir.msm8974
