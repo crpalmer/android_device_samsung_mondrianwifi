@@ -70,9 +70,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mondrianwifi/bluet
 BOARD_BLUEDROID_VENDOR_CONF := device/samsung/mondrianwifi/bluetooth/vnd_mondrianwifi.txt
 BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 
-# NFC
-BOARD_NFC_HAL_SUFFIX := msm8974
-
 # Samsung's nonstandard csd-client
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 

@@ -263,10 +263,6 @@ etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
 
-# nfc firmware
-#vendor/firmware/bcm2079xB4_firmware.ncd
-#vendor/firmware/bcm2079xB4_pre_firmware.ncd
-
 # postproc
 bin/mm-pp-daemon
 vendor/lib/libdisp-aba.so

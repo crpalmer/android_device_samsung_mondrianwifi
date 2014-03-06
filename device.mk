@@ -141,38 +141,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml
 
-# Nfc
-NFCEE_ACCESS_PATH := device/samsung/mondrianwifi/nfc/nfcee_access.xml
-
-ifeq ($(TARGET_NFC_TECH), nxp)
-PRODUCT_PACKAGES += \
-    libnfc \
-    libnfc_jni \
-    Nfc \
-    Tag \
-    com.android.nfc_extras
-
-PRODUCT_COPY_FILES += \
-    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
-
-else
-
-PRODUCT_PACKAGES += \
-    libnfc-nci \
-    libnfc_nci_jni \
-    nfc_nci.msm8974 \
-    NfcNci \
-    Tag \
-    com.android.nfc_extras
-
-PRODUCT_COPY_FILES += \
-    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
-    device/samsung/mondrianwifi/nfc/libnfc-brcm-20791b05.conf:system/etc/libnfc-brcm-20791b05.conf \
-    device/samsung/mondrianwifi/nfc/libnfc-brcm-20791b04.conf:system/etc/libnfc-brcm-20791b04.conf \
-    device/samsung/mondrianwifi/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
-
-endif
-
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
