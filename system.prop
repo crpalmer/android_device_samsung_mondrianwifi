@@ -7,3 +7,4 @@ ro.hdcp2.rx=tz
 ro.secwvk=144
 debug.sensors=1
 persist.fuse_sdcard=true
+qcom.hw.aac.encoder=true
