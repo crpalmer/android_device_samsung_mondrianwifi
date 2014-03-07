@@ -408,6 +408,7 @@
 		<ctl name="ADC2 Volume" value="14" />
 		<ctl name="DEC5 Volume" value="84" />
 	</path>
+
 	<!-- end of Recording Scenario -->
 
 	<!-- ================================================================ -->
@@ -459,6 +460,11 @@
 		<ctl name="ADC2 Volume" value="12" />
 		<ctl name="DEC5 Volume" value="84" />
 	</path>
+
+	<path name="voice-rec-mic">
+		<path name="vr-main-mic" />
+	</path>
+
 	<!-- end of recognition Scenario -->
 
 	<!-- ================================================================ -->
