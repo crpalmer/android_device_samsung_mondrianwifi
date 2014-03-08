@@ -67,8 +67,8 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 # bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mondrianwifi/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/samsung/mondrianwifi/bluetooth/vnd_mondrianwifi.txt
-BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
+BOARD_HAVE_BLUETOOTH_QCOM := true
+BOARD_HAVE_BLUETOOTH_BCM :=
 
 # Samsung's nonstandard csd-client
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true

@@ -323,8 +323,7 @@ service ril-qmi /system/bin/sh /init.qcom.ril.sh
 on property:vold.decrypt=trigger_restart_framework
     setprop ro.fuse_sdcard ${persist.fuse_sdcard}
     start qcom-c_main-sh
-# BRCM bt
-#     start config_bluetooth
+    start config_bluetooth
 
 #ALRAN : Run qmuxd, qmiproxy .. "disabled" type main service while encryption stage
 on property:vold.decrypt=trigger_restart_min_framework
@@ -360,83 +359,42 @@ on property:ro.debuggable=1
     chmod 0666 /sys/class/mhl/swing
     chmod 0666 /sys/class/mhl/timing
 
-# BRCM bt
-# service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-#     class core
-#     user root
-#     oneshot
-
-# service dbus /system/bin/dbus-daemon --system --nofork
-#     class main
-#     socket dbus stream 660 bluetooth bluetooth
-#     user bluetooth
-#     group bluetooth net_bt_admin
-#     disabled
-
-# on property:ro.qc.bluetooth.stack=bluez
-#     start dbus
-
-# service bluetoothd /system/bin/logwrapper /system/bin/bluetoothd -n
-#     class main
-#     socket bluetooth stream 660 bluetooth bluetooth
-#     socket dbus_bluetooth stream 660 bluetooth bluetooth
-#     # init.rc does not yet support applying capabilities, so run as root and
-#     # let bluetoothd drop uid to bluetooth with the right linux capabilities
-#     group bluetooth net_bt_admin misc net_bt_stack
-#     disabled
-
-# service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-#     class late_start
-#     user bluetooth
-#     group bluetooth net_bt_admin
-#     disabled
-#     oneshot
-
-# on property:bluetooth.hciattach=true
-#     start hciattach
-
-# on property:bluetooth.hciattach=false
-#     setprop bluetooth.status off
-
-# service hciattach_ath3k /system/bin/sh /system/etc/init.ath3k.bt.sh
-#      class late_start
-#      user bluetooth
-#      group system bluetooth net_bt_admin misc
-#      disabled
-#      oneshot
-
-# service bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
-#     class late_start
-#     user bluetooth
-#     group bluetooth net_bt_admin inet
-#     disabled
-#     oneshot
-
-# service bt-sap /system/bin/sapd 15
-#     user bluetooth
-#     group bluetooth net_bt_admin
-#     class late_start
-#     disabled
-#     oneshot
-
-service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
-    class late_start
+service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
+    class core
     user root
-    group bluetooth net_bt_admin misc net_bt_stack qcom_diag
+    oneshot
+
+service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
+    class late_start
+    user bluetooth
+    group bluetooth net_bt_admin
     disabled
     oneshot
 
-service bridgemgrd /system/bin/bridgemgrd
-    class late_start
-    user radio
-    group radio qcom_diag
-    disabled
+on property:bluetooth.hciattach=true
+    start hciattach
 
-service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0
-    class late_start
-    user system
-    group system inet
-    disabled
+on property:bluetooth.hciattach=false
+    setprop bluetooth.status off
+
+#service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
+#    class late_start
+#    user root
+#    group bluetooth net_bt_admin misc net_bt_stack qcom_diag
+#    disabled
+#    oneshot
+
+#service bridgemgrd /system/bin/bridgemgrd
+#    class late_start
+#    user radio
+#    group radio qcom_diag
+#    disabled
+
+#service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0
+#    class late_start
+#    user system
+#    group system inet
+#    disabled
 
 service qmiproxy /system/bin/qmiproxy
     class main
@@ -448,7 +406,7 @@ service qmiproxy /system/bin/qmiproxy
 service qmuxd /system/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth gps qcom_diag log
+    group radio audio bluetooth gps qcom_diag
     disabled
 
 service netmgrd /system/bin/netmgrd
