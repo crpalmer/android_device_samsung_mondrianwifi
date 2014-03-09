@@ -84,6 +84,13 @@ PRODUCT_COPY_FILES += \
     device/samsung/mondrianwifi/keylayout/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl \
     device/samsung/mondrianwifi/keylayout/ue_rf4ce_remote.kl:system/usr/keylayout/ue_rf4ce_remote.kl
 
+# NFC doesn't exist
+
+PRODUCT_COPY_FILES_OVERRIDES += \
+   system/etc/permissions/com.android.nfc_extras.xml \
+   system/etc/permissions/android.hardware.nfc.xml \
+   system/etc/permissions/android.hardware.nfc.hce.xml
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
