@@ -125,9 +125,6 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 # of the device.
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-# Assert
-TARGET_OTA_ASSERT_DEVICE := mondrianwifi
-
 # PowerHAL extension
 TARGET_POWERHAL_SET_INTERACTIVE_EXT := device/samsung/mondrianwifi/power/power_ext.c
 
