@@ -34,7 +34,7 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 TARGET_KERNEL_SOURCE := kernel/samsung/mondrianwifi
 TARGET_KERNEL_CONFIG := msm8974_sec_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
-TARGET_KERNEL_VARIANT_CONFIG := msm8974_sec_mondrianwifi_usa_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := msm8974_sec_mondrianwifi_defconfig
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
@@ -134,3 +134,10 @@ BOARD_HAVE_NEW_QC_GPS :=
 # We don't use old-ass RPC
 TARGET_NO_RPC := true
 
+# Vendor Init
+TARGET_UNIFIED_DEVICE := true
+TARGET_INIT_VENDOR_LIB := libinit_msm
+TARGET_LIBINIT_DEFINES_FILE := device/samsung/mondrianwifi/init/init_mondrianwifi.c
+
+# OTA Identification
+TARGET_OTA_ASSERT_DEVICE := mondrianwifi,mondrianwifiue,mondrianwifixx
