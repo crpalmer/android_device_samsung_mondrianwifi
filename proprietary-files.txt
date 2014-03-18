@@ -10,17 +10,13 @@ bin/thermald
 bin/thermal-engine
 vendor/lib/libthermalclient.so
 
-# Bluetooth firmware
-#vendor/firmware/bcm4339.hcd
-#vendor/firmware/bcm4339.hcd:vendor/firmware/bcm4335.hcd
-#vendor/firmware/bcm4339_A0.hcd
-#vendor/firmware/bcm4339_semco.hcd
-#vendor/firmware/bcm4339_wisol.hcd
+# Bluetooth
+bin/btnvtool
+bin/hci_qcomm_init
+etc/init.qcom.bt.sh
+lib/libbtnv.so
 
 # GPS
--app/com.qualcomm.location.apk
-bin/gsiff_daemon
-etc/permissions/com.qualcomm.location.xml
 lib/libloc_api_v02.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
@@ -74,6 +70,10 @@ etc/firmware/a330_pm4.fw
 # Graphics
 vendor/lib/libmm-color-convertor.so
 
+# Sensors
+lib/libinvensense_hal.so
+lib/libmllite.so
+lib/libmplmpu.so
 lib/hw/sensors.msm8974.so
 
 #  Radio
@@ -183,6 +183,7 @@ lib/libmmcamera_s5k6b2yx.so
 lib/libsecnativefeature.so
 lib/libvdis.so
 vendor/lib/libthermalclient.so
+vendor/lib/libmmcamera_imx134.so
 vendor/lib/libmmcamera_imx135.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libsensor1.so
@@ -214,25 +215,9 @@ vendor/lib/libchromatix_imx135_vt_hd.so
 vendor/lib/liboemcamera.so
 
 # Wi-Fi
-#etc/wifi/bcmdhd_apsta.bin
-#etc/wifi/bcmdhd_apsta.bin_a0
-#etc/wifi/bcmdhd_mfg.bin
-#etc/wifi/bcmdhd_mfg.bin_a0
-#etc/wifi/bcmdhd_sta.bin
-#etc/wifi/bcmdhd_sta.bin_a0
-#etc/wifi/cred.conf
-#etc/wifi/nvram_mfg.txt
-#etc/wifi/nvram_mfg.txt_a0
-#etc/wifi/nvram_mfg.txt
-#etc/wifi/nvram_mfg.txt_murata
-#etc/wifi/nvram_mfg.txt_murata_a0
-#etc/wifi/nvram_mfg.txt_muratafem1
-#etc/wifi/nvram_mfg.txt_muratafem2
-#etc/wifi/nvram_net.txt
-#etc/wifi/nvram_net.txt_murata
-#etc/wifi/nvram_net.txt_murata_a0
-#etc/wifi/nvram_net.txt_muratafem1
-#etc/wifi/wpa_supplicant.conf
+etc/firmware/wlan/prima/WCNSS_cfg.dat
+etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+lib/modules/pronto/pronto_wlan.ko:lib/modules/wlan.ko
 
 # Perf
 vendor/lib/libqc-opt.so
@@ -242,7 +227,7 @@ bin/qseecomd
 lib/libdrmdecrypt.so
 lib/libhdcp2.so
 lib/libstagefright_hdcp.so
-lib/libWVStreamControlAPI_L1.so
+vendor/lib/libWVStreamControlAPI_L1.so:lib/libWVStreamControlAPI_L1.so
 lib/libwvm.so
 lib/drm/libdrmwvmplugin.so
 vendor/lib/libdrmfs.so
@@ -251,7 +236,6 @@ vendor/lib/liboemcrypto.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
-vendor/lib/libWVStreamControlAPI_L1.so:lib/libWVStreamControlAPI_L1.so
 lib/libwvm.so
 
 # IPC router security
