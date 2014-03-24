@@ -130,6 +130,7 @@ TARGET_POWERHAL_SET_INTERACTIVE_EXT := device/samsung/mondrianwifi/power/power_e
 
 # The "new" GPS is really the old GPS, override it.
 BOARD_HAVE_NEW_QC_GPS :=
+TARGET_PROVIDES_GPS_LOC_API := true
 
 # We don't use old-ass RPC
 TARGET_NO_RPC := true
