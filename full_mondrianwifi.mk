@@ -14,11 +14,11 @@
  
 #
 # This file is the build configuration for a full Android
-# build for maguro hardware. This cleanly combines a set of
+# build for mondrianwifi hardware. This cleanly combines a set of
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps). Except for a few implementation
 # details, it only fundamentally contains two inherit-product
-# lines, full and maguro, hence its name.
+# lines, full and mondrianwifi, hence its name.
 #
  
 
