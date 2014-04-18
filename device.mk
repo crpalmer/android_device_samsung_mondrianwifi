@@ -103,6 +103,7 @@ PRODUCT_PACKAGES += \
     init.ril.rc \
     init.target.rc \
     ueventd.qcom.rc
+
 # HAL
 PRODUCT_PACKAGES += \
     copybit.msm8974 \
