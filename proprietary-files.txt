@@ -214,11 +214,6 @@ vendor/lib/libchromatix_imx135_vt.so
 vendor/lib/libchromatix_imx135_vt_hd.so
 vendor/lib/liboemcamera.so
 
-# Wi-Fi
-etc/firmware/wlan/prima/WCNSS_cfg.dat
-etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
-lib/modules/pronto/pronto_wlan.ko:lib/modules/wlan.ko
-
 # Perf
 vendor/lib/libqc-opt.so
 
