@@ -19,6 +19,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 ## Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/samsung/mondrianwifi/mondrianwifi-vendor.mk)
 
+## We are a tablet, not a phone
+PRODUCT_CHARACTERISTICS := tablet
+
 ## overlays
 DEVICE_PACKAGE_OVERLAYS += device/samsung/mondrianwifi/overlay
 
