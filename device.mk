@@ -129,9 +129,6 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     tinymix
 
-# Torch
-PRODUCT_PACKAGES += Torch
-
 # Wifi
 PRODUCT_PACKAGES += \
     libnetcmdiface \
