@@ -8,3 +8,4 @@ ro.secwvk=144
 debug.sensors=1
 persist.fuse_sdcard=true
 qcom.hw.aac.encoder=true
+lockscreen.rot_override=true
