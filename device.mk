@@ -131,7 +131,6 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    libnetcmdiface \
     macloader \
     crda \
     regulatory.bin \
