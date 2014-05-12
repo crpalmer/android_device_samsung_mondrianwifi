@@ -80,7 +80,6 @@ lib/hw/sensors.msm8974.so
 bin/ds_fmc_appd
 bin/efsks
 bin/ks
-#vendor/bin/netmgrd
 #vendor/bin/sec-ril
 bin/qcks
 bin/qmiproxy
