@@ -96,13 +96,23 @@ static int check_vendor_module()
     return rv;
 }
 
+#define KEY_VIDEO_HFR_VALUES "video-hfr-values"
+
 static char * camera_fixup_getparams(int id, const char * settings)
 {
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
 
-
-
+    /* If the vendor has HFR values but doesn't also expose that
+     * this can be turned off, fixup the params to tell the Camera
+     * that it really is okay to turn it off.
+     */
+    const char* hfrValues = params.get(KEY_VIDEO_HFR_VALUES);
+    if (hfrValues && *hfrValues && ! strstr(hfrValues, "off")) {
+        char tmp[strlen(hfrValues) + 4 + 1];
+        sprintf(tmp, "off,%s", hfrValues);
+        params.set(KEY_VIDEO_HFR_VALUES, tmp);
+    }
 
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
