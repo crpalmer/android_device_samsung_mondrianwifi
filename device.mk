@@ -134,7 +134,8 @@ PRODUCT_PACKAGES += \
     crda \
     regulatory.bin \
     linville.key.pub.pem \
-    wcnss_service
+    wcnss_service \
+    libwcnss_qmi
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
