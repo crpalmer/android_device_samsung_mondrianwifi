@@ -83,8 +83,6 @@ on early-boot
     chown system system /sys/class/graphics/fb1/format_3d
     ## [END] system_sw.sa
 
-    # Download the wlan firmware and start it up
-    write /dev/wcnss_wlan 1
     start wcnss-service
 
 on boot
@@ -450,7 +448,7 @@ service amp_unload /system/bin/amploader -u
 service wcnss-service /system/bin/wcnss_service
     class late_start
     user system
-    group system wifi
+    group system wifi qcom_diag radio
     disabled
     oneshot
 
