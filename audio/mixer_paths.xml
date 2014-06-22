@@ -1061,7 +1061,7 @@
                 <path name="speaker-and-headphones" />
         </path>
 
-        <path name="rec-stereo-mic">
+        <path name="rec-high-gain-stereo-mic">
                 <path name="main-mic" />
                 <ctl name="ADC1 Volume" value="17" />
                 <ctl name="DEC6 Volume" value="84" />
