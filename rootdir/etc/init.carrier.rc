@@ -31,6 +31,10 @@ on boot
     chown system radio /sys/class/sec/sec_epen/epen_saving_mode
     chown system radio /sys/class/sec/sec_epen/boost_level
 
+# permissions for gpio keys
+    chmod 0660 /sys/class/input/input5/enabled
+    chown system system /sys/class/input/input5/enabled
+
 # permissions for bluetooth.
     setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
     chown bluetooth net_bt_stack ro.bt.bdaddr_path
