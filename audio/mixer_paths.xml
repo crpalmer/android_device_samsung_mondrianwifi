@@ -315,6 +315,8 @@
 		<ctl name="RX6 Digital Volume" value="82" />
 		<ctl name="LINEOUT3 Volume" value="19" />
 		<ctl name="LINEOUT4 Volume" value="19" />
+                <ctl name="SLIM_0_RX Format" value="S24_LE" />
+                <ctl name="SLIM_0_RX SampleRate" value="KHZ_192" />
 	</path>
 
 	<path name="headset">
@@ -324,6 +326,8 @@
 		<ctl name="RX1 Digital Volume" value="80" />
 		<ctl name="RX2 Digital Volume" value="80" />
 		<ctl name="COMP1 Switch" value="1" />
+                <ctl name="SLIM_0_RX Format" value="S24_LE" />
+                <ctl name="SLIM_0_RX SampleRate" value="KHZ_192" />
 	</path>
 
 	<path name="dock">
@@ -347,6 +351,8 @@
 		<ctl name="RX6 Digital Volume" value="83" />
 		<ctl name="LINEOUT3 Volume" value="19" />
 		<ctl name="LINEOUT4 Volume" value="19" />
+                <ctl name="SLIM_0_RX Format" value="S24_LE" />
+                <ctl name="SLIM_0_RX SampleRate" value="KHZ_192" />
 	</path>
 
 	<path name="speaker-and-hdmi">
