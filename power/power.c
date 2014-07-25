@@ -16,15 +16,24 @@
 
 #include <errno.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <fcntl.h>
 
-#define LOG_TAG "PowerHAL_H_Ext"
+#define LOG_TAG "PowerHAL"
 #include <utils/Log.h>
+
+#include <hardware/hardware.h>
+#include <hardware/power.h>
 
 #define TOUCHKEY_POWER "/sys/class/input/input2/enabled"
 //#define SPEN_POWER "/sys/class/input/input3/enabled"
 #define TSP_POWER "/sys/class/input/input4/enabled"
 #define GPIO_KEYS_POWER "/sys/class/input/input5/enabled"
+
+struct local_power_module {
+    struct power_module base;
+};
 
 static void sysfs_write(char *path, char *s) {
     char buf[80];
@@ -46,7 +55,7 @@ static void sysfs_write(char *path, char *s) {
     close(fd);
 }
 
-void cm_power_set_interactive_ext(int on) {
+void power_set_interactive(struct power_module *module, int on) {
     ALOGD("%s: %s input devices", __func__, on ? "enabling" : "disabling");
     sysfs_write(TSP_POWER, on ? "1" : "0");
     sysfs_write(TOUCHKEY_POWER, on ? "1" : "0");
@@ -54,4 +63,51 @@ void cm_power_set_interactive_ext(int on) {
     //sysfs_write(SPEN_POWER, on ? "1" : "0");
 }
 
+static void power_hint(struct power_module *module, power_hint_t hint,
+                            void *data)
+{
+    struct local_power_module *pm = (struct local_power_module *) module;
+    int duration;
 
+    switch (hint) {
+    case POWER_HINT_INTERACTION:
+        ALOGI("crpalmer: ignoring interaction\n");
+        break;
+
+    case POWER_HINT_CPU_BOOST:
+        duration = data != NULL ? (int) data : 1;
+        ALOGI("crpalmer: ignoring boost of %d\n", duration);
+        break;
+
+    case POWER_HINT_VSYNC:
+        break;
+
+    default:
+        break;
+    }
+}
+
+static void power_init(struct power_module *module)
+{
+}
+
+static struct hw_module_methods_t power_module_methods = {
+    .open = NULL,
+};
+
+struct local_power_module HAL_MODULE_INFO_SYM = {
+    base: {
+        common: {
+            tag: HARDWARE_MODULE_TAG,
+            module_api_version: POWER_MODULE_API_VERSION_0_2,
+            hal_api_version: HARDWARE_HAL_API_VERSION,
+            id: POWER_HARDWARE_MODULE_ID,
+            name: "Mondrianwifi Power HAL",
+            author: "The CyanogenMod Project",
+            methods: &power_module_methods,
+        },
+       init: power_init,
+       setInteractive: power_set_interactive,
+       powerHint: power_hint,
+    },
+};
