@@ -103,8 +103,7 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
 # PowerHAL
-#TARGET_POWERHAL_VARIANT := qcom
-TARGET_POWERHAL_SET_INTERACTIVE_EXT := device/samsung/mondrianwifi/power/power_ext.c
+#TARGET_POWERHAL_VARIANT := mondrianwifi
 
 # The "new" GPS is really the old GPS, override it.
 BOARD_HAVE_NEW_QC_GPS :=
