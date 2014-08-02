@@ -71,12 +71,12 @@ static void power_hint(struct power_module *module, power_hint_t hint,
 
     switch (hint) {
     case POWER_HINT_INTERACTION:
-        ALOGI("crpalmer: ignoring interaction\n");
+        ALOGD("crpalmer: ignoring interaction\n");
         break;
 
     case POWER_HINT_CPU_BOOST:
         duration = data != NULL ? (int) data : 1;
-        ALOGI("crpalmer: ignoring boost of %d\n", duration);
+        ALOGD("crpalmer: ignoring boost of %d\n", duration);
         break;
 
     case POWER_HINT_VSYNC:
