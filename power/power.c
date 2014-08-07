@@ -56,7 +56,7 @@ static void sysfs_write(char *path, char *s) {
 }
 
 void power_set_interactive(struct power_module *module, int on) {
-    ALOGD("%s: %s input devices", __func__, on ? "enabling" : "disabling");
+    ALOGV("%s: %s input devices", __func__, on ? "enabling" : "disabling");
     sysfs_write(TSP_POWER, on ? "1" : "0");
     sysfs_write(TOUCHKEY_POWER, on ? "1" : "0");
     sysfs_write(GPIO_KEYS_POWER, on ? "1" : "0");
@@ -71,12 +71,12 @@ static void power_hint(struct power_module *module, power_hint_t hint,
 
     switch (hint) {
     case POWER_HINT_INTERACTION:
-        ALOGD("crpalmer: ignoring interaction\n");
+        ALOGV("crpalmer: ignoring interaction\n");
         break;
 
     case POWER_HINT_CPU_BOOST:
         duration = data != NULL ? (int) data : 1;
-        ALOGD("crpalmer: ignoring boost of %d\n", duration);
+        ALOGV("crpalmer: ignoring boost of %d\n", duration);
         break;
 
     case POWER_HINT_VSYNC:
