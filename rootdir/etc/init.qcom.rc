@@ -380,6 +380,7 @@ service qmuxd /system/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps qcom_diag
+    disabled
 
 service sensors /system/bin/sensors.qcom
     class late_start
