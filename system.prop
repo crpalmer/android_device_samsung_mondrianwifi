@@ -13,3 +13,7 @@ ro.qc.sdk.izat.service_mask=0x0
 
 # radio
 ro.radio.noril=yes
+
+# CWMR Options
+ro.cwm.forbid_format=/boot,/firmware,/firmware-modem
+ro.cwm.forbid_mount=/boot
