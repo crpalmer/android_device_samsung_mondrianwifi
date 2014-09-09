@@ -56,6 +56,7 @@
 
     <device_names>
         <!-- Output devices -->
+        <device name="SND_DEVICE_OUT_HANDSET" alias="voice-call-handset" />
         <device name="SND_DEVICE_OUT_HEADPHONES" alias="headset" />
         <device name="SND_DEVICE_OUT_VOICE_HANDSET" alias="voice-call-handset" />
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" alias="voice-call-speaker" />
@@ -65,12 +66,12 @@
         <device name="SND_DEVICE_OUT_VOICE_TTY_HCO_HANDSET" alias="TTY-handset" />
 
         <!-- Input devices -->
-        <device name="SND_DEVICE_IN_HANDSET_MIC" alias="rec-main-mic" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC" alias="voice-call-main-mic" />
         <device name="SND_DEVICE_IN_HANDSET_DMIC" alias="voice-call-main-mic" />
         <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" alias="voice-call-NS-mic-handset" />
         <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC" alias="voice-call-main-mic" />
         <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC_NS" alias="voice-call-main-mic" />
-        <device name="SND_DEVICE_IN_SPEAKER_MIC" alias="rec-sub-mic" />
+        <device name="SND_DEVICE_IN_SPEAKER_MIC" alias="voice-call-sub-mic" />
         <device name="SND_DEVICE_IN_SPEAKER_DMIC" alias="voice-call-sub-mic" />
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_NS" alias="voice-call-NS-mic-speaker" />
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC" alias="voice-call-sub-mic" />
