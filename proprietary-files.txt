@@ -43,11 +43,16 @@ etc/Speaker_cal.acdb
 #etc/firmware/wcd9320/wcd9320_mad_audio.bin
 #etc/firmware/wcd9320/wcd9320_mbhc.bin
 
-# mmparser extended
+# Media
+vendor/lib/libDivxDrm.so
 vendor/lib/libExtendedExtractor.so
 vendor/lib/libmmparser.so
 vendor/lib/libmmosal.so
-vendor/lib/libDivxDrm.so
+vendor/lib/libOmxAacDec.so
+vendor/lib/libOmxAmrwbplusDec.so
+vendor/lib/libOmxEvrcDec.so
+vendor/lib/libOmxQcelp13Dec.so
+vendor/lib/libOmxWmaDec.so
 
 # Adreno GPU
 vendor/lib/egl/eglsubAndroid.so
@@ -221,20 +226,21 @@ vendor/lib/libqc-opt.so
 
 # DRM
 bin/qseecomd
+bin/drmserver
 lib/libdrmdecrypt.so
-lib/libhdcp2.so
-lib/libstagefright_hdcp.so
-# Stock would be: vendor/lib/libWVStreamControlAPI_L1.so:lib/libWVStreamControlAPI_L1.so
-lib/libWVStreamControlAPI_L1.so
-lib/libwvm.so
-lib/drm/libdrmwvmplugin.so
+#lib/libhdcp2.so
+#lib/libstagefright_hdcp.so
+vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/liboemcrypto.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
-lib/libwvm.so
+vendor/lib/libwvm.so
+vendor/lib/libwvdrm_L1.so
+vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/mediadrm/libwvdrmengine.so
 
 # IPC router security
 etc/sec_config
