@@ -709,8 +709,8 @@ on property:sys.boot_completed=1
     # Configure the GPU
     write 320000000 /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/devfreq/min_freq
 
-    # Start hotplugging / unplugging
-    write /sys/devices/system/cpu/simple_plug/active 1
+    # Post boot services
+    start mpdecision
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start
