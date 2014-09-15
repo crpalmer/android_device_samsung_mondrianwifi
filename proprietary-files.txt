@@ -226,20 +226,18 @@ vendor/lib/libqc-opt.so
 
 # DRM
 bin/qseecomd
-bin/drmserver
 lib/libdrmdecrypt.so
 #lib/libhdcp2.so
 #lib/libstagefright_hdcp.so
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
-vendor/lib/liboemcrypto.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libwvm.so
-vendor/lib/libwvdrm_L1.so
-vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/libwvdrm_L3.so
+vendor/lib/libWVStreamControlAPI_L3.so
 vendor/lib/mediadrm/libwvdrmengine.so
 
 # IPC router security
