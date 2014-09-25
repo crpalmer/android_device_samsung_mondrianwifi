@@ -30,7 +30,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02900000 --tags_offset 0x02700000
 TARGET_KERNEL_CONFIG := cyanogenmod_mondrian_defconfig
-TARGET_KERNEL_SOURCE := kernel/samsung/mondrianwifi
+TARGET_KERNEL_SOURCE := kernel/samsung/msm8974
 
 # Audio
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
