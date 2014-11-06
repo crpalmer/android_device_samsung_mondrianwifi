@@ -44,8 +44,4 @@ $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wlan/prima; \
     ln -sf /data/misc/wifi/WCNSS_qcom_cfg.ini \
         $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini)
 
-# Create a link to equate /vendor/firmware and /system/etc/firmware
-$(shell mkdir -p $(TARGET_OUT)/vendor; \
-    ln -sf /system/etc/firmware $(TARGET_OUT)/vendor/firmware)
-
 endif
