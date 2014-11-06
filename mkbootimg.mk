@@ -8,11 +8,21 @@ LOCAL_PATH := $(call my-dir)
 KERNEL_CONFIG := $(KERNEL_OUT)/.config
 MONDRIANWIFI_DTS_NAMES := msm8974
 
-MONDRIANWIFI_DTS_FILES = $(wildcard $(TOP)/$(TARGET_KERNEL_SOURCE)/arch/arm/boot/dts/qcom/apq8074-sec-mondrianwifi-*.dts)
+MONDRIANWIFI_DTS_FILES = $(wildcard $(TOP)/$(TARGET_KERNEL_SOURCE)/arch/arm/boot/dts/apq8074-sec-mondrianwifi-*.dts)
 MONDRIANWIFI_DTS_FILE = $(lastword $(subst /, ,$(1)))
 DTB_FILE = $(addprefix $(KERNEL_OUT)/arch/arm/boot/,$(patsubst %.dts,%.dtb,$(call MONDRIANWIFI_DTS_FILE,$(1))))
 ZIMG_FILE = $(addprefix $(KERNEL_OUT)/arch/arm/boot/,$(patsubst %.dts,%-zImage,$(call MONDRIANWIFI_DTS_FILE,$(1))))
 KERNEL_ZIMG = $(KERNEL_OUT)/arch/arm/boot/zImage
+DTC = $(KERNEL_OUT)/scripts/dtc/dtc
+
+define append-mondrianwifi-dtb
+mkdir -p $(KERNEL_OUT)/arch/arm/boot;\
+$(foreach MONDRIANWIFI_DTS_NAME, $(MONDRIANWIFI_DTS_NAMES), \
+   $(foreach d, $(MONDRIANWIFI_DTS_FILES), \
+      $(DTC) -p 1024 -O dtb -o $(call DTB_FILE,$(d)) $(d); \
+      cat $(KERNEL_ZIMG) $(call DTB_FILE,$(d)) > $(call ZIMG_FILE,$(d));))
+endef
+
 
 ## Build and run dtbtool
 DTBTOOL := $(HOST_OUT_EXECUTABLES)/dtbToolCM$(HOST_EXECUTABLE_SUFFIX)
