@@ -26,7 +26,6 @@
 #
 
 import init.qcom.usb.rc
-import init.ril.rc
 import init.target.rc
 
 on early-init
@@ -316,10 +315,6 @@ on property:vold.decrypt=trigger_restart_framework
     setprop ro.fuse_sdcard ${persist.fuse_sdcard}
     start config_bluetooth
 
-service cnd /system/bin/cnd
-    class late_start
-    socket cnd stream 660 root inet
-
 service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
@@ -533,12 +528,6 @@ on property:init.svc.macloader=stopped
     chmod 0664 /data/.rev
 # end of wifi
 
-service wiperiface /system/bin/wiperiface
-    class late_start
-    user gps
-    group gps qcom_oncrpc net_raw
-    oneshot
-
 service gpsone_daemon /system/bin/gpsone_daemon
     class late_start
     user gps
@@ -715,12 +704,6 @@ on property:sys.boot_completed=1
     # Post boot services
     start mpdecision
 
-service atfwd /system/bin/ATFWD-daemon
-    class late_start
-    user system
-    group system radio
-    onrestart /system/bin/log -t RIL-ATFWD -p w "ATFWD daemon restarted"
-
 service hdmid /system/bin/hdmid
     class late_start
     socket hdmid stream 0660 root system graphics
@@ -784,8 +767,6 @@ service container /system/bin/sdcard /data/container /mnt/shell/container 1000 1
     class late_start
     oneshot
 
-    start container
-
 # virtual sdcard daemon running as media_rw (1023)
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
     class late_start
@@ -828,11 +809,6 @@ on property:persist.usb.hvdcp.detect=true
 
 on property:persist.usb.hvdcp.detect=false
     stop hvdcp
-
-service ssr_diag /system/bin/ssr_diag
-    class late_start
-    user system
-    group system
 
 # Disable SSR to SoC restart
 on property:persist.sys.ssr.restart_level=1
