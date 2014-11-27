@@ -112,7 +112,6 @@ vendor/lib/libqmi_csi.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqcci_legacy.so
 vendor/lib/libqmi_client_qmux.so
-lib/libreference-ril.so
 lib/libsecril-client.so
 
 # Time services
