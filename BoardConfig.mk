@@ -43,11 +43,17 @@ AUDIO_FEATURE_DISABLED_FM := true
 AUDIO_FEATURE_DISABLED_ANC_HEADSET := true
 
 # Bluetooth
+BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mondrianwifi/bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
 
+# Camera
+TARGET_PROVIDES_CAMERA_HAL := true
+USE_DEVICE_SPECIFIC_CAMERA := true
+
 # GPS
 TARGET_NO_RPC := true
+TARGET_GPS_HAL_PATH := device/samsung/mondrianwifi/gps
 
 # Hardware
 BOARD_HARDWARE_CLASS += device/samsung/mondrianwifi/cmhw
@@ -59,6 +65,7 @@ TARGET_UNIFIED_DEVICE := true
 
 # Graphics
 TARGET_HAVE_NEW_GRALLOC := true
+BOARD_USES_LEGACY_MMAP := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -66,7 +73,10 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 13631488
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2569011200
+# Use a conservative size to make sure don't run out of space
+# US variant is: 2569011200
+# EU variant is: 2411724800
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2400000000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12661537792
 BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -83,6 +93,29 @@ BOARD_RECOVERY_SWIPE := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 BOARD_USES_MMCUTILS := true
 TARGET_RECOVERY_FSTAB := device/samsung/mondrianwifi/rootdir/etc/fstab.qcom
+
+# SELinux
+include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += device/samsung/mondrianwifi/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+  file_contexts \
+  file.te \
+  init.te \
+  keystore.te \
+  mediaserver.te \
+  mm-pp-daemon.te \
+  mm-qcamerad.te \
+  mpdecision.te \
+  rmt_storage.te \
+  system_app.te \
+  system_server.te \
+  tee.te \
+  thermal-engine.te \
+  time_daemon.te \
+  ueventd.te \
+  vold.te \
+  wcnss-service.te \
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true

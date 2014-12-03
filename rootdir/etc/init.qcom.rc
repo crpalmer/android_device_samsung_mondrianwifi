@@ -26,10 +26,12 @@
 #
 
 import init.qcom.usb.rc
-import init.ril.rc
+import init.target.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
+    write /sys/block/mmcblk0/queue/read_ahead_kb 512
+    write /sys/block/mmcblk1/queue/read_ahead_kb 512
     write /sys/block/mmcblk0/queue/scheduler noop
 
 on init
@@ -111,6 +113,9 @@ on boot
     chmod 0660 /dev/ttyHS2
     chown bluetooth bluetooth /dev/ttyHS2
 
+    #Basic permissions
+    chown root system /dev/socket
+    chmod 775 /dev/socket
     #Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
@@ -310,11 +315,7 @@ on property:vold.decrypt=trigger_restart_framework
     setprop ro.fuse_sdcard ${persist.fuse_sdcard}
     start config_bluetooth
 
-service cnd /system/bin/cnd
-    class late_start
-    socket cnd stream 660 root inet
-
-service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
@@ -527,12 +528,6 @@ on property:init.svc.macloader=stopped
     chmod 0664 /data/.rev
 # end of wifi
 
-service wiperiface /system/bin/wiperiface
-    class late_start
-    user gps
-    group gps qcom_oncrpc net_raw
-    oneshot
-
 service gpsone_daemon /system/bin/gpsone_daemon
     class late_start
     user gps
@@ -625,7 +620,7 @@ on property:sys.boot_completed=1
     write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu1/standalone_power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu2/standalone_power_collapse/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu3/standalone_power_collapse/suspend_enabled
+    write /sys/module/msm_pm/modes/cpu3/standalone_power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled 1
     write /sys/module/msm_pm/modes/cpu1/standalone_power_collapse/idle_enabled 1
     write /sys/module/msm_pm/modes/cpu2/standalone_power_collapse/idle_enabled 1
@@ -709,12 +704,6 @@ on property:sys.boot_completed=1
     # Post boot services
     start mpdecision
 
-service atfwd /system/bin/ATFWD-daemon
-    class late_start
-    user system
-    group system radio
-    onrestart /system/bin/log -t RIL-ATFWD -p w "ATFWD daemon restarted"
-
 service hdmid /system/bin/hdmid
     class late_start
     socket hdmid stream 0660 root system graphics
@@ -778,8 +767,6 @@ service container /system/bin/sdcard /data/container /mnt/shell/container 1000 1
     class late_start
     oneshot
 
-    start container
-
 # virtual sdcard daemon running as media_rw (1023)
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
     class late_start
@@ -822,11 +809,6 @@ on property:persist.usb.hvdcp.detect=true
 
 on property:persist.usb.hvdcp.detect=false
     stop hvdcp
-
-service ssr_diag /system/bin/ssr_diag
-    class late_start
-    user system
-    group system
 
 # Disable SSR to SoC restart
 on property:persist.sys.ssr.restart_level=1

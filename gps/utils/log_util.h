@@ -89,6 +89,8 @@ extern const char ENTRY_TAG[];
 extern void loc_logger_init(unsigned long debug, unsigned long timestamp);
 extern char* get_timestamp(char* str, unsigned long buf_size);
 
+#define DEBUG_DMN_LOC_API 1
+
 #ifndef DEBUG_DMN_LOC_API
 
 /* LOGGING MACROS */
