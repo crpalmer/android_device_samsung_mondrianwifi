@@ -17,21 +17,58 @@
 #include <errno.h>
 #include <string.h>
 #include <fcntl.h>
+#include <ctype.h>
 
 #define LOG_TAG "PowerHAL_H_Ext"
 #include <utils/Log.h>
 
-#define TOUCHKEY_POWER "/sys/class/input/input2/enabled"
-//#define SPEN_POWER "/sys/class/input/input3/enabled"
-#define TSP_POWER "/sys/class/input/input4/enabled"
-#define GPIO_KEYS_POWER "/sys/class/input/input5/enabled"
+#define MAX_INPUTS 20
+#define INPUT_PREFIX "/sys/class/input/input"
+#define MAX_PATH_SIZE (strlen(INPUT_PREFIX) + 20)
 
-static void sysfs_write(char *path, char *s) {
+static const char *names[] = { "sec_touchscreen", "gpio-keys" };
+#define N_NAMES (sizeof(names) / sizeof(names[0]))
+static char *paths[N_NAMES];
+static int have_found_paths;
+
+static size_t sysfs_read(char *path, char *buffer, size_t n)
+{
+    char buf[80];
+    int fd;
+    ssize_t len;
+
+    if ((fd = open(path, O_RDONLY)) < 0) {
+        if (errno != ENOENT) {
+            strerror_r(errno, buf, sizeof(buf));
+            ALOGE("Error opening %s: %s\n", path, buf);
+        }
+        return 0;
+    }
+
+    len = read(fd, buffer, n);
+    if (len < 0) {
+        strerror_r(errno, buf, sizeof(buf));
+        ALOGE("Error reading from %s: %s\n", path, buf);
+        return 0;
+    }
+
+    while (len > 0 && isspace(buffer[len-1])) len--;
+    if ((size_t) len < n) buffer[len] = '\0';
+
+    close(fd);
+
+    return len;
+}
+
+static void sysfs_write(char *path, char *s)
+{
     char buf[80];
     int len;
-    int fd = open(path, O_WRONLY);
+    int fd;
 
-    if (fd < 0) {
+    if (path == NULL) return;
+
+    if ((fd = open(path, O_WRONLY)) < 0) {
         strerror_r(errno, buf, sizeof(buf));
         ALOGE("Error opening %s: %s\n", path, buf);
         return;
@@ -46,10 +83,37 @@ static void sysfs_write(char *path, char *s) {
     close(fd);
 }
 
-void cm_power_set_interactive_ext(int on) {
+static void
+find_paths(void)
+{
+    size_t i, j;
+    char path[MAX_PATH_SIZE];
+    char name[20];
+
+    for (i = 0; i < MAX_INPUTS; i++) {
+        sprintf(path, "%s%d/name", INPUT_PREFIX, i);
+        if (sysfs_read(path, name, sizeof(name)) > 0) {
+            for (j = 0; j < N_NAMES; j++) {
+                if (strcmp(name, names[j]) == 0) {
+                    paths[j] = malloc(MAX_PATH_SIZE);
+                    sprintf(paths[j], "%s%d/enabled", INPUT_PREFIX, i);
+                    ALOGD("%s => %s\n", names[j], paths[j]);
+                }
+            }
+        }
+    }
+}
+
+void cm_power_set_interactive_ext(int on)
+{
+    size_t i;
+
     ALOGD("%s: %s input devices", __func__, on ? "enabling" : "disabling");
-    sysfs_write(TSP_POWER, on ? "1" : "0");
-    sysfs_write(TOUCHKEY_POWER, on ? "1" : "0");
-    sysfs_write(GPIO_KEYS_POWER, on ? "1" : "0");
-    //sysfs_write(SPEN_POWER, on ? "1" : "0");
+
+    if (! have_found_paths) {
+        find_paths();
+        have_found_paths = 1;
+    }
+
+    for (i = 0; i < N_NAMES; i++) sysfs_write(paths[i], on ? "1" : "0");
 }
