@@ -1,4 +1,2 @@
-allow system_server display_sysfs:file rw_file_perms;
 allow system_server efs_file:dir search;
-allow system_server time_daemon:unix_stream_socket connectto;
 allow system_server sysfs_input_file:file rw_file_perms;

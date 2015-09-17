@@ -1,2 +1,1 @@
-type display_sysfs, sysfs_type, file_type;
 type sysfs_input_file, fs_type, sysfs_type;
