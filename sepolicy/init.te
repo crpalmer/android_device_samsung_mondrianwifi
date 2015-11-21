@@ -1,1 +1,2 @@
 allow init firmware_file:dir search;
+allow init self:socket read;

@@ -5,3 +5,6 @@ allow mediaserver socket_device:sock_file write;
 allow mediaserver system_data_file:sock_file write;
 allow mediaserver system_prop:property_service set;
 allow mediaserver thermal-engine:unix_stream_socket connectto;
+# This sucks but needed for libmmjpeg
+allow mediaserver system_file:file execmod;
+
