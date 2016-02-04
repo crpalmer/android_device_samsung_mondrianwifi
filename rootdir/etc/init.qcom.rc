@@ -752,6 +752,7 @@ service hcidump /system/bin/sh /system/etc/hcidump.sh
 
 service charger /charger
     class charger
+    seclabel u:r:healthd:s0
 
 service hvdcp /system/bin/hvdcp
     class core
