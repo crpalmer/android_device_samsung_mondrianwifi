@@ -136,7 +136,6 @@ PRODUCT_PACKAGES += \
     hostapd_default.conf \
     libwcnss_qmi \
     libwpa_client \
-    macloader \
     wcnss_service \
     wpa_supplicant
 
