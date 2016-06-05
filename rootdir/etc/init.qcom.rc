@@ -61,8 +61,6 @@ on early-boot
     chown system system /sys/class/graphics/fb1/format_3d
     ## [END] system_sw.sa
 
-    start wcnss-service
-
 on boot
 
     mount debugfs /sys/kernel/debug /sys/kernel/debug
@@ -282,6 +280,7 @@ on property:ro.bluetooth.ftm_enabled=true
 
 on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
+    start wcnss-service
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
@@ -391,10 +390,9 @@ service amp_unload /system/bin/amploader -u
     oneshot
 
 service wcnss-service /system/bin/wcnss_service
-    class late_start
+    class main
     user system
     group system wifi qcom_diag radio
-    disabled
     oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
